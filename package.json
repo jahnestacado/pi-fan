@@ -1,0 +1,24 @@
+{
+  "name": "pi-fan",
+  "version": "1.0.0",
+  "description": "A script to switch \"on\" and \"off\" a fan according to CPUs temperature through the GPIO pins",
+  "main": "pi-fan.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fan",
+    "raspberry-pi",
+    "pi",
+    "raspbian",
+    "ubuntu",
+    "linux",
+    "temperature",
+    "temp"
+  ],
+  "author": "Ioannis Tzanellis <ioannis.kiwe@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "pi-blaster.js": "0.0.2"
+  }
+}
