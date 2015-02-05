@@ -6,7 +6,7 @@ var TEMP_SOURCE_LOCATION = "/sys/class/thermal/thermal_zone0/temp";
 var DEFAULT_INTERVAL = 10000;
 
 //Input arguments
-var gpioPin;
+var gpioFanPin;
 var tempThreshold;
 var interval;
 
@@ -20,7 +20,6 @@ function readTemp(interval, onDone) {
 }
 
 function fanController(temperature) {
-    console.log(temperature);
     if (temperature > tempThreshold) {
         piBlaster.setPwm(gpioFanPin, 1);
     } else {
@@ -29,9 +28,9 @@ function fanController(temperature) {
 }
 
 (function main() {
-    var gpioFanPin = process.argv[2];
-    var tempThreshold = process.argv[3];
-    var interval = process.argv[4] || DEFAULT_INTERVAL;
+    gpioFanPin = process.argv[2];
+    tempThreshold = process.argv[3];
+    interval = process.argv[4] || DEFAULT_INTERVAL;
 
     if (!gpioFanPin || !tempThreshold) {
         console.log("Usage: ./ pi-fan.js <gpio-pin> <temp-threshold> <interval-check>");
