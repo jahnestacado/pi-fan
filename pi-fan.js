@@ -36,6 +36,6 @@ function fanController(temperature) {
         console.log("Usage: ./ pi-fan.js <gpio-pin> <temp-threshold> <interval-check>");
     } else {
         readTemp(interval, fanController);
-    };
+    }
     
 })();

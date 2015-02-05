@@ -20,5 +20,9 @@
   "license": "MIT",
   "dependencies": {
     "pi-blaster.js": "0.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jahnestacado/pi-fan"
   }
 }
