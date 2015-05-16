@@ -16,7 +16,7 @@ var interval;
     interval = process.argv[4] || DEFAULT_INTERVAL;
 
     if (!gpioFanPin || !tempThreshold) {
-        console.log("Usage: ./ pi-fan.js <gpio-pin> <temp-threshold> <interval-check>");
+        console.log("Usage: ./pi-fan.js <gpio-pin> <temp-threshold> <interval-check>");
     } else {
         readTemp(interval, fanController);
     }
