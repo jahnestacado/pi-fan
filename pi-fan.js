@@ -10,6 +10,19 @@ var gpioFanPin;
 var tempThreshold;
 var interval;
 
+(function main() {
+    gpioFanPin = process.argv[2];
+    tempThreshold = process.argv[3];
+    interval = process.argv[4] || DEFAULT_INTERVAL;
+
+    if (!gpioFanPin || !tempThreshold) {
+        console.log("Usage: ./ pi-fan.js <gpio-pin> <temp-threshold> <interval-check>");
+    } else {
+        readTemp(interval, fanController);
+    }
+
+})();
+
 function readTemp(interval, onDone) {
     setInterval(function() {
         var unformattedTemp = Number(fs.readFileSync(TEMP_SOURCE_LOCATION, "utf8").trim());
@@ -26,16 +39,3 @@ function fanController(temperature) {
         piBlaster.setPwm(gpioFanPin, 0);
     }
 }
-
-(function main() {
-    gpioFanPin = process.argv[2];
-    tempThreshold = process.argv[3];
-    interval = process.argv[4] || DEFAULT_INTERVAL;
-
-    if (!gpioFanPin || !tempThreshold) {
-        console.log("Usage: ./ pi-fan.js <gpio-pin> <temp-threshold> <interval-check>");
-    } else {
-        readTemp(interval, fanController);
-    }
-    
-})();
