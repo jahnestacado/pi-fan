@@ -18,9 +18,8 @@ var interval;
     if (!gpioFanPin || !tempThreshold) {
         console.log("Usage: ./pi-fan.js <gpio-pin> <temp-threshold> <interval-check>");
     } else {
-        readTemp(interval, fanController);
+        readTemp(interval, handleFanState);
     }
-
 })();
 
 function readTemp(interval, onDone) {
@@ -32,7 +31,7 @@ function readTemp(interval, onDone) {
     }, interval);
 }
 
-function fanController(temperature) {
+function handleFanState(temperature) {
     if (temperature > tempThreshold) {
         piBlaster.setPwm(gpioFanPin, 1);
     } else {
