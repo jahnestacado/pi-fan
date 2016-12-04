@@ -24,10 +24,11 @@ var interval;
 
 function readTemp(interval, onDone) {
     setInterval(function() {
-        var unformattedTemp = Number(fs.readFileSync(TEMP_SOURCE_LOCATION, "utf8").trim());
-        var tempInCelcius = unformattedTemp / 1000;
-
-        onDone(tempInCelcius);
+        fs.readFile(TEMP_SOURCE_LOCATION, function(tempAsString){
+            var unformattedTemp = Number(tempAsString.trim());
+            var tempInCelcius = unformattedTemp / 1000;
+            onDone(tempInCelcius);
+        });
     }, interval);
 }
 
